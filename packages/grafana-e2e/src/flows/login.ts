@@ -23,5 +23,9 @@ export const login = (username: string = 'admin', password: string = 'admin') =>
   e2e()
     .get('.login-page')
     .should('not.exist');
+
+  // Remember nothing from previous sessions
+  e2e().clearLocalStorage();
+
   e2e().logToConsole('Logged in with username:', username);
 };
