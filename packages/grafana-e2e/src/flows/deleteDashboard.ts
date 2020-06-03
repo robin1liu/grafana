@@ -1,7 +1,12 @@
 import { e2e } from '../index';
 import { fromBaseUrl } from '../support/url';
 
-export const deleteDashboard = (uid: string) => {
+export interface DeleteDashboardConfig {
+  title: string;
+  uid: string;
+}
+
+export const deleteDashboard = ({ title, uid }: DeleteDashboardConfig) => {
   e2e().logToConsole('Deleting dashboard with uid:', uid);
   e2e().request('DELETE', fromBaseUrl(`/api/dashboards/uid/${uid}`));
 
@@ -25,4 +30,18 @@ export const deleteDashboard = (uid: string) => {
     }
   });
   */
+
+  e2e.getScenarioContext().then(({ addedDashboards }: any) => {
+    addedDashboards = addedDashboards.filter((dashboard: DeleteDashboardConfig) => {
+      return dashboard.title !== title && dashboard.uid !== uid;
+    });
+
+    const lastAddedDashboard = addedDashboards[addedDashboards.length - 1];
+
+    e2e.setScenarioContext({
+      addedDashboards,
+      lastAddedDashboard: lastAddedDashboard?.title ?? '',
+      lastAddedDashboardUid: lastAddedDashboard?.uid ?? '',
+    });
+  });
 };

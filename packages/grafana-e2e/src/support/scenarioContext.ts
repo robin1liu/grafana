@@ -1,14 +1,20 @@
 import { e2e } from '../index';
+import { DeleteDashboardConfig } from '../flows/deleteDashboard';
+import { DeleteDataSourceConfig } from '../flows/deleteDataSource';
 
 export interface ScenarioContext {
-  lastAddedDashboard: string;
+  addedDashboards: DeleteDashboardConfig[];
+  addedDataSources: DeleteDataSourceConfig[];
+  lastAddedDashboard: string; // @todo rename to `lastAddedDashboardTitle`
   lastAddedDashboardUid: string;
-  lastAddedDataSource: string;
+  lastAddedDataSource: string; // @todo rename to `lastAddedDataSourceName`
   lastAddedDataSourceId: string;
   [key: string]: any;
 }
 
 const scenarioContext: ScenarioContext = {
+  addedDashboards: [],
+  addedDataSources: [],
   lastAddedDashboard: '',
   lastAddedDashboardUid: '',
   lastAddedDataSource: '',

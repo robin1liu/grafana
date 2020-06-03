@@ -34,9 +34,12 @@ export const addDashboard = (config?: Partial<AddDashboardConfig>): any => {
     .then((url: string) => {
       const uid = getDashboardUid(url);
 
-      e2e.setScenarioContext({
-        lastAddedDashboard: title,
-        lastAddedDashboardUid: uid,
+      e2e.getScenarioContext().then(({ addedDashboardUids }: any) => {
+        e2e.setScenarioContext({
+          addedDashboardUids: [...addedDashboardUids, uid],
+          lastAddedDashboard: title,
+          lastAddedDashboardUid: uid,
+        });
       });
 
       // @todo remove `wrap` when possible
