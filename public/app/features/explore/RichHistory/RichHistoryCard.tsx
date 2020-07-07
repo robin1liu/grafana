@@ -173,7 +173,7 @@ export function RichHistoryCard(props: Props) {
   const onCopyQuery = () => {
     const queriesToCopy = query.queries.map(q => createQueryText(q, queryDsInstance)).join('\n');
     copyStringToClipboard(queriesToCopy);
-    appEvents.emit(AppEvents.alertSuccess, ['Query copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['查询已复制']);
   };
 
   const onCreateLink = () => {
@@ -184,7 +184,7 @@ export function RichHistoryCard(props: Props) {
 
   const onDeleteQuery = () => {
     updateRichHistory(query.ts, 'delete');
-    appEvents.emit(AppEvents.alertSuccess, ['Query deleted']);
+    appEvents.emit(AppEvents.alertSuccess, ['查询已删除']);
   };
 
   const onStarrQuery = () => {
@@ -217,16 +217,16 @@ export function RichHistoryCard(props: Props) {
     <div className={styles.updateCommentContainer} aria-label={comment ? 'Update comment form' : 'Add comment form'}>
       <TextArea
         value={comment}
-        placeholder={comment ? undefined : 'An optional description of what the query does.'}
+        placeholder={comment ? undefined : '给这个查询添加一个描述'}
         onChange={e => setComment(e.currentTarget.value)}
         className={styles.textArea}
       />
       <div className={styles.commentButtonRow}>
         <Button onClick={onUpdateComment} aria-label="Submit button">
-          Save comment
+          保存评论
         </Button>
         <Button variant="secondary" onClick={onCancelUpdateComment}>
-          Cancel
+          取消
         </Button>
       </div>
     </div>
@@ -237,16 +237,15 @@ export function RichHistoryCard(props: Props) {
       <IconButton
         name="comment-alt"
         onClick={toggleActiveUpdateComment}
-        title={query.comment?.length > 0 ? 'Edit comment' : 'Add comment'}
+        title={query.comment?.length > 0 ? '编辑评论' : '新增评论'}
       />
-      <IconButton name="copy" onClick={onCopyQuery} title="Copy query to clipboard" />
-      {!isRemoved && <IconButton name="link" onClick={onCreateLink} title="Copy link to clipboard" />}
-      <IconButton name="trash-alt" title={'Delete query'} onClick={onDeleteQuery} />
+      <IconButton name="copy" onClick={onCopyQuery} title="复制到剪切板" />
+      <IconButton name="trash-alt" title={'删除查询'} onClick={onDeleteQuery} />
       <IconButton
         name={query.starred ? 'favorite' : 'star'}
         iconType={query.starred ? 'mono' : 'default'}
         onClick={onStarrQuery}
-        title={query.starred ? 'Unstar query' : 'Star query'}
+        title={query.starred ? '取消收藏' : '收藏'}
       />
     </div>
   );
@@ -282,7 +281,7 @@ export function RichHistoryCard(props: Props) {
         {!activeUpdateComment && (
           <div className={styles.runButton}>
             <Button variant="secondary" onClick={onRunQuery} disabled={isRemoved}>
-              {datasourceInstance?.name === query.datasourceName ? 'Run query' : 'Switch data source and run query'}
+              {datasourceInstance?.name === query.datasourceName ? '执行查询' : 'Switch data source and run query'}
             </Button>
           </div>
         )}

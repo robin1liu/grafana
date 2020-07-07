@@ -96,27 +96,6 @@ export function RichHistoryStarredTab(props: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.containerContent}>
-        <div className={styles.selectors}>
-          {!activeDatasourceOnly && (
-            <div aria-label="Filter datasources" className={styles.multiselect}>
-              <Select
-                isMulti={true}
-                options={listOfDatasources}
-                value={datasourceFilters}
-                placeholder="Filter queries for specific data sources(s)"
-                onChange={onSelectDatasourceFilters}
-              />
-            </div>
-          )}
-          <div aria-label="Sort queries" className={styles.sort}>
-            <Select
-              options={sortOrderOptions}
-              value={sortOrderOptions.filter(order => order.value === sortOrder)}
-              placeholder="Sort queries by"
-              onChange={e => onChangeSortOrder(e.value as SortOrder)}
-            />
-          </div>
-        </div>
         {sortedStarredQueries.map(q => {
           const idx = listOfDatasources.findIndex(d => d.label === q.datasourceName);
           return (
@@ -129,7 +108,6 @@ export function RichHistoryStarredTab(props: Props) {
             />
           );
         })}
-        <div className={styles.footer}>The history is local to your browser and is not shared with others.</div>
       </div>
     </div>
   );

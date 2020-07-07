@@ -268,7 +268,7 @@ const Body = memo<Props>(({ onChange, from, to, timeZone }) => {
       nextLabel={<Icon name="angle-right" />}
       prevLabel={<Icon name="angle-left" />}
       onChange={onCalendarChange}
-      locale="en"
+      locale="zh-cn"
     />
   );
 });
@@ -280,10 +280,10 @@ const Footer = memo<Props>(({ onClose, onApply }) => {
   return (
     <div className={styles.container}>
       <Button className={styles.apply} onClick={onApply}>
-        Apply time range
+        使用范围
       </Button>
       <Button variant="secondary" onClick={onClose}>
-        Cancel
+        取消
       </Button>
     </div>
   );

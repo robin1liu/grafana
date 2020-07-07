@@ -209,7 +209,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
                       margin-bottom: 3px;
                     `}
                   />
-                  Explore
+                  查询控制台
                 </span>
               )}
             </div>
@@ -220,45 +220,6 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
         </div>
         <div className="explore-toolbar-item">
           <div className="explore-toolbar-content">
-            {!datasourceMissing ? (
-              <div className="explore-toolbar-content-item">
-                <div
-                  className={classNames(
-                    'explore-ds-picker',
-                    showSmallDataSourcePicker ? 'explore-ds-picker--small' : ''
-                  )}
-                >
-                  <DataSourcePicker
-                    onChange={this.onChangeDatasource}
-                    datasources={getExploreDatasources()}
-                    current={this.getSelectedDatasource()}
-                    showLoading={datasourceLoading}
-                    hideTextValue={showSmallDataSourcePicker}
-                  />
-                </div>
-                {showModeToggle ? (
-                  <div className="query-type-toggle">
-                    <ToggleButtonGroup label="" transparent={true}>
-                      {[ExploreMode.Metrics, ExploreMode.Logs, ExploreMode.Tracing]
-                        .filter(mode => supportedModes.includes(mode))
-                        .map(mode => {
-                          return (
-                            <ToggleButton
-                              key={mode}
-                              value={mode}
-                              onChange={this.onModeChange}
-                              selected={selectedMode === mode}
-                            >
-                              {mode}
-                            </ToggleButton>
-                          );
-                        })}
-                    </ToggleButtonGroup>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-
             {originPanelId && Number.isInteger(originPanelId) && !splitted && (
               <div className="explore-toolbar-content-item">
                 <Tooltip content={'Return to panel'} placement="bottom">
@@ -281,7 +242,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
               <div className="explore-toolbar-content-item explore-icon-align">
                 <ResponsiveButton
                   splitted={splitted}
-                  title="Split"
+                  title="分割"
                   /* This way ResponsiveButton doesn't add event as a parameter when invoking split function
                    * which breaks splitting functionality
                    */
@@ -311,7 +272,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
               <div className="explore-toolbar-content-item explore-icon-align">
                 <ResponsiveButton
                   splitted={splitted}
-                  title="Clear All"
+                  title="清空"
                   onClick={this.onClearAll}
                   icon="trash-alt"
                   iconClassName="icon-margin-right"

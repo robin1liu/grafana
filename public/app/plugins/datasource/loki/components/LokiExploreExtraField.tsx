@@ -23,7 +23,7 @@ export function LokiExploreExtraField(props: LokiExploreExtraFieldProps) {
         <input
           type={type}
           className="gf-form-input width-4"
-          placeholder={'auto'}
+          placeholder={'默认'}
           onChange={onChangeFunc}
           onKeyDown={onKeyDownFunc}
           min={min}

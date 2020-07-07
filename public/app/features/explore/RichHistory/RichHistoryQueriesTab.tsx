@@ -161,7 +161,7 @@ export function RichHistoryQueriesTab(props: Props) {
     <div className={styles.container}>
       <div className={styles.containerSlider}>
         <div className={styles.slider}>
-          <div className="label-slider">Filter history</div>
+          <div className="label-slider">查询历史</div>
           <div className="label-slider">{mapNumbertoTimeInSlider(sliderRetentionFilter[0])}</div>
           <div className="slider">
             <Slider
@@ -180,32 +180,11 @@ export function RichHistoryQueriesTab(props: Props) {
       </div>
 
       <div className={styles.containerContent}>
-        <div className={styles.selectors}>
-          {!activeDatasourceOnly && (
-            <div aria-label="Filter datasources" className={styles.multiselect}>
-              <Select
-                isMulti={true}
-                options={listOfDatasources}
-                value={datasourceFilters}
-                placeholder="Filter queries for specific data sources(s)"
-                onChange={onSelectDatasourceFilters}
-              />
-            </div>
-          )}
-          <div aria-label="Sort queries" className={styles.sort}>
-            <Select
-              value={sortOrderOptions.filter(order => order.value === sortOrder)}
-              options={sortOrderOptions}
-              placeholder="Sort queries by"
-              onChange={e => onChangeSortOrder(e.value as SortOrder)}
-            />
-          </div>
-        </div>
         {Object.keys(mappedQueriesToHeadings).map(heading => {
           return (
             <div key={heading}>
               <div className={styles.heading}>
-                {heading} <span className={styles.queries}>{mappedQueriesToHeadings[heading].length} queries</span>
+                {heading} <span className={styles.queries}>{mappedQueriesToHeadings[heading].length} 次查询</span>
               </div>
               {mappedQueriesToHeadings[heading].map((q: RichHistoryQuery) => {
                 const idx = listOfDatasources.findIndex(d => d.label === q.datasourceName);
@@ -222,7 +201,6 @@ export function RichHistoryQueriesTab(props: Props) {
             </div>
           );
         })}
-        <div className={styles.footer}>The history is local to your browser and is not shared with others.</div>
       </div>
     </div>
   );

@@ -74,7 +74,7 @@ export function LokiExploreQueryEditor(props: Props) {
       ExtraFieldElement={
         exploreMode === ExploreMode.Logs ? (
           <LokiExploreExtraField
-            label={'Line limit'}
+            label={'最大行数'}
             onChangeFunc={onMaxLinesChange}
             onKeyDownFunc={onReturnKeyDown}
             value={query?.maxLines?.toString() || ''}

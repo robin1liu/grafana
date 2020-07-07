@@ -4,7 +4,7 @@ import { getTimeZone } from './common';
 export const timeZoneFormatUserFriendly = (timeZone: TimeZone | undefined) => {
   switch (getTimeZone({ timeZone })) {
     case 'browser':
-      return 'Local browser time';
+      return '浏览器时间';
     case 'utc':
       return 'UTC';
     default:

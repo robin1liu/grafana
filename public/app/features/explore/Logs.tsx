@@ -205,23 +205,9 @@ export class Logs extends PureComponent<Props, State> {
         </div>
         <div className="logs-panel-options">
           <div className="logs-panel-controls">
-            <Switch label="Time" checked={showTime} onChange={this.onChangeTime} transparent />
-            <Switch label="Unique labels" checked={showLabels} onChange={this.onChangeLabels} transparent />
-            <Switch label="Wrap lines" checked={wrapLogMessage} onChange={this.onChangewrapLogMessage} transparent />
-            <ToggleButtonGroup label="Dedup" transparent={true}>
-              {Object.keys(LogsDedupStrategy).map((dedupType: string, i) => (
-                <ToggleButton
-                  key={i}
-                  value={dedupType}
-                  onChange={this.onChangeDedup}
-                  selected={dedupStrategy === dedupType}
-                  // @ts-ignore
-                  tooltip={LogsDedupDescription[dedupType]}
-                >
-                  {dedupType}
-                </ToggleButton>
-              ))}
-            </ToggleButtonGroup>
+            <Switch label="时间戳" checked={showTime} onChange={this.onChangeTime} transparent />
+            <Switch label="唯一标识" checked={showLabels} onChange={this.onChangeLabels} transparent />
+            <Switch label="自动换行" checked={wrapLogMessage} onChange={this.onChangewrapLogMessage} transparent />
           </div>
         </div>
 
@@ -253,14 +239,7 @@ export class Logs extends PureComponent<Props, State> {
           getFieldLinks={getFieldLinks}
         />
 
-        {!loading && !hasData && !scanning && (
-          <div className="logs-panel-nodata">
-            No logs found.
-            <Button size="xs" variant="link" onClick={this.onClickScan}>
-              Scan for older logs
-            </Button>
-          </div>
-        )}
+        {!loading && !hasData && !scanning && <div className="logs-panel-nodata">没有可用日志.</div>}
 
         {scanning && (
           <div className="logs-panel-nodata">

@@ -24,7 +24,7 @@ export const NoDataSourceCallToAction = () => {
 
   const ctaElement = (
     <LinkButton size="lg" href="/datasources/new" icon="database">
-      Add data source
+      新增数据源
     </LinkButton>
   );
 

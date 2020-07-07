@@ -29,7 +29,7 @@ export function SecondaryActions(props: Props) {
           disabled={props.addQueryRowButtonDisabled}
         >
           <Icon className="icon-margin-right" name="plus" size="sm" />
-          <span className="btn-title">{'\xA0' + 'Add query'}</span>
+          <span className="btn-title">{'\xA0' + '新增查询'}</span>
         </button>
       )}
       <button
@@ -40,7 +40,7 @@ export function SecondaryActions(props: Props) {
         onClick={props.onClickRichHistoryButton}
       >
         <Icon className="icon-margin-right" name="history" size="sm" />
-        <span className="btn-title">{'\xA0' + 'Query history'}</span>
+        <span className="btn-title">{'\xA0' + '查询历史'}</span>
       </button>
     </div>
   );

@@ -31,7 +31,7 @@ function getChooserText(hasSyntax: boolean, hasLogLabels: boolean) {
   if (!hasLogLabels) {
     return '(No labels found)';
   }
-  return 'Log labels';
+  return '日志标签';
 }
 
 function willApplySuggestion(suggestion: string, { typeaheadContext, typeaheadText }: SuggestionsState): string {
@@ -174,7 +174,7 @@ export class LokiQueryFieldForm extends React.PureComponent<LokiQueryFieldFormPr
               onChange={this.onChangeQuery}
               onBlur={this.props.onBlur}
               onRunQuery={this.props.onRunQuery}
-              placeholder="Enter a Loki query (run with Shift+Enter)"
+              placeholder="输入loki查询语句 (使用 Shift+Enter 执行)"
               portalOrigin="loki"
               syntaxLoaded={syntaxLoaded}
             />

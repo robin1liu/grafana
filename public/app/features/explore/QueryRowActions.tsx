@@ -49,13 +49,13 @@ export function QueryRowActions(props: Props) {
           disabled={isNotStarted}
           className="gf-form-label gf-form-label--btn"
           onClick={onClickToggleDisabled}
-          title={isDisabled ? 'Enable query' : 'Disable query'}
+          title={isDisabled ? '启用此查询' : '禁用此查询'}
         >
           <Icon name={isDisabled ? 'eye-slash' : 'eye'} />
         </button>
       </div>
       <div className="gf-form">
-        <button className="gf-form-label gf-form-label--btn" onClick={onClickRemoveButton} title="Remove query">
+        <button className="gf-form-label gf-form-label--btn" onClick={onClickRemoveButton} title="移除查询">
           <Icon name="minus" />
         </button>
       </div>

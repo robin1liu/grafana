@@ -131,7 +131,7 @@ export function LiveTailButton(props: LiveTailButtonProps) {
           icon={!isLive ? 'play' : 'pause'}
           iconClassName={isLive && 'icon-brand-gradient'}
           onClick={onClickMain}
-          title={'\xa0Live'}
+          title={'\xa0实时'}
         />
       </Tooltip>
       <CSSTransition

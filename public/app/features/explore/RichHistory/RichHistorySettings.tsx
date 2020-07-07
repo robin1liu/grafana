@@ -38,10 +38,10 @@ const getStyles = stylesFactory((theme: GrafanaTheme) => {
 });
 
 const retentionPeriodOptions = [
-  { value: 2, label: '2 days' },
-  { value: 5, label: '5 days' },
-  { value: 7, label: '1 week' },
-  { value: 14, label: '2 weeks' },
+  { value: 2, label: '2 天' },
+  { value: 5, label: '5 天' },
+  { value: 7, label: '1 周' },
+  { value: 14, label: '2 周' },
 ];
 
 export function RichHistorySettings(props: RichHistorySettingsProps) {
@@ -73,25 +73,9 @@ export function RichHistorySettings(props: RichHistorySettingsProps) {
 
   return (
     <div className={styles.container}>
-      <Field
-        label="History time span"
-        description="Select the period of time for which Grafana will save your query history"
-        className="space-between"
-      >
+      <Field label="保存时间" description="选择一个查询历史保存的时间" className="space-between">
         <div className={styles.input}>
           <Select value={selectedOption} options={retentionPeriodOptions} onChange={onChangeRetentionPeriod}></Select>
-        </div>
-      </Field>
-      <Field label="Default active tab" description=" " className="space-between">
-        <div className={styles.switch}>
-          <Switch value={starredTabAsFirstTab} onChange={toggleStarredTabAsFirstTab}></Switch>
-          <div className={styles.label}>Change the default active tab from “Query history” to “Starred”</div>
-        </div>
-      </Field>
-      <Field label="Data source behaviour" description=" " className="space-between">
-        <div className={styles.switch}>
-          <Switch value={activeDatasourceOnly} onChange={toggleactiveDatasourceOnly}></Switch>
-          <div className={styles.label}>Only show queries for data source currently active in Explore</div>
         </div>
       </Field>
       <div
@@ -99,17 +83,17 @@ export function RichHistorySettings(props: RichHistorySettingsProps) {
           font-weight: ${theme.typography.weight.bold};
         `}
       >
-        Clear query history
+        清空查询历史
       </div>
       <div
         className={css`
           margin-bottom: ${theme.spacing.sm};
         `}
       >
-        Delete all of your query history, permanently.
+        永久清空全部查询历史.
       </div>
       <Button variant="destructive" onClick={onDelete}>
-        Clear query history
+        清空查询历史
       </Button>
     </div>
   );

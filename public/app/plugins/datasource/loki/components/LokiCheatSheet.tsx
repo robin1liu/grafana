@@ -81,37 +81,35 @@ export default class LokiCheatSheet extends PureComponent<ExploreStartPageProps,
 
     return (
       <>
-        <h2>Loki Cheat Sheet</h2>
+        <h2>日志查询入门</h2>
         <div className="cheat-sheet-item">
-          <div className="cheat-sheet-item__title">See your logs</div>
-          <div className="cheat-sheet-item__label">Start by selecting a log stream from the Log labels selector.</div>
-          <div className="cheat-sheet-item__label">
-            Alternatively, you can write a stream selector into the query field:
-          </div>
+          <div className="cheat-sheet-item__title">简单查询</div>
+          <div className="cheat-sheet-item__label">使用日志标签下拉框选择需要查询的指定标签日志.</div>
+          <div className="cheat-sheet-item__label">也可以直接手动输入如下格式的查询语句:</div>
           {this.renderExpression('{job="default/prometheus"}')}
           {userExamples !== DEFAULT_EXAMPLES && userExamples.length > 0 ? (
             <div>
-              <div className="cheat-sheet-item__label">Here are some example streams from your logs:</div>
+              <div className="cheat-sheet-item__label">你的日志可以参考如下示例:</div>
               {userExamples.map(example => this.renderExpression(example))}
             </div>
           ) : null}
         </div>
         <div className="cheat-sheet-item">
-          <div className="cheat-sheet-item__title">Combine stream selectors</div>
+          <div className="cheat-sheet-item__title">组合查询</div>
           {this.renderExpression('{app="cassandra",namespace="prod"}')}
-          <div className="cheat-sheet-item__label">Returns all log lines from streams that have both labels.</div>
+          <div className="cheat-sheet-item__label">将返回同时拥有这两个标签的日志.</div>
         </div>
 
         <div className="cheat-sheet-item">
-          <div className="cheat-sheet-item__title">Filtering for search terms.</div>
+          <div className="cheat-sheet-item__title">关键字</div>
           {this.renderExpression('{app="cassandra"} |~ "(duration|latency)s*(=|is|of)s*[d.]+"')}
-          {this.renderExpression('{app="cassandra"} |= "exact match"')}
-          {this.renderExpression('{app="cassandra"} != "do not match"')}
+          {this.renderExpression('{app="cassandra"} |= "关键字匹配"')}
+          {this.renderExpression('{app="cassandra"} != "关键字过滤"')}
           <div className="cheat-sheet-item__label">
             <a href="https://github.com/grafana/loki/blob/master/docs/logql.md#filter-expression" target="logql">
               LogQL
             </a>{' '}
-            supports exact and regular expression filters.
+            更多语法请参考日志开源文档.
           </div>
         </div>
       </>
