@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import { stylesFactory, useTheme, Select, Button, Switch, Field } from '@grafana/ui';
+import { stylesFactory, useTheme, Select, Button, Field } from '@grafana/ui';
 import { GrafanaTheme, AppEvents } from '@grafana/data';
 import appEvents from 'app/core/app_events';
 import { CoreEvents } from 'app/types';
@@ -45,15 +45,7 @@ const retentionPeriodOptions = [
 ];
 
 export function RichHistorySettings(props: RichHistorySettingsProps) {
-  const {
-    retentionPeriod,
-    starredTabAsFirstTab,
-    activeDatasourceOnly,
-    onChangeRetentionPeriod,
-    toggleStarredTabAsFirstTab,
-    toggleactiveDatasourceOnly,
-    deleteRichHistory,
-  } = props;
+  const { retentionPeriod, onChangeRetentionPeriod, deleteRichHistory } = props;
   const theme = useTheme();
   const styles = getStyles(theme);
   const selectedOption = retentionPeriodOptions.find(v => v.value === retentionPeriod);

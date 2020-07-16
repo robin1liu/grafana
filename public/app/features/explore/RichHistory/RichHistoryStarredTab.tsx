@@ -14,8 +14,6 @@ import { sortQueries, createDatasourcesList } from '../../../core/utils/richHist
 
 // Components
 import RichHistoryCard from './RichHistoryCard';
-import { sortOrderOptions } from './RichHistory';
-import { Select } from '@grafana/ui';
 
 export interface Props {
   queries: RichHistoryQuery[];
@@ -67,15 +65,7 @@ const getStyles = stylesFactory((theme: GrafanaTheme) => {
 });
 
 export function RichHistoryStarredTab(props: Props) {
-  const {
-    datasourceFilters,
-    onSelectDatasourceFilters,
-    queries,
-    onChangeSortOrder,
-    sortOrder,
-    activeDatasourceOnly,
-    exploreId,
-  } = props;
+  const { datasourceFilters, queries, sortOrder, exploreId } = props;
 
   const theme = useTheme();
   const styles = getStyles(theme);

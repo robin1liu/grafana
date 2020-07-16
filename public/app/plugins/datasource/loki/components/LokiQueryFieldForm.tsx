@@ -26,10 +26,10 @@ import LokiDatasource from '../datasource';
 
 function getChooserText(hasSyntax: boolean, hasLogLabels: boolean) {
   if (!hasSyntax) {
-    return 'Loading labels...';
+    return '正在加载';
   }
   if (!hasLogLabels) {
-    return '(No labels found)';
+    return '(标签不存在)';
   }
   return '日志标签';
 }

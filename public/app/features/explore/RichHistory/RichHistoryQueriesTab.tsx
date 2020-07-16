@@ -20,8 +20,7 @@ import {
 
 // Components
 import RichHistoryCard from './RichHistoryCard';
-import { sortOrderOptions } from './RichHistory';
-import { Slider, Select } from '@grafana/ui';
+import { Slider } from '@grafana/ui';
 
 export interface Props {
   queries: RichHistoryQuery[];
@@ -120,17 +119,7 @@ const getStyles = stylesFactory((theme: GrafanaTheme, height: number) => {
 });
 
 export function RichHistoryQueriesTab(props: Props) {
-  const {
-    datasourceFilters,
-    onSelectDatasourceFilters,
-    queries,
-    onChangeSortOrder,
-    sortOrder,
-    activeDatasourceOnly,
-    retentionPeriod,
-    exploreId,
-    height,
-  } = props;
+  const { datasourceFilters, queries, sortOrder, retentionPeriod, exploreId, height } = props;
 
   const [sliderRetentionFilter, setSliderRetentionFilter] = useState<[number, number]>([0, retentionPeriod]);
 

@@ -9,13 +9,12 @@ import {
   LogsMetaKind,
   LogsDedupStrategy,
   LogRowModel,
-  LogsDedupDescription,
   LogsMetaItem,
   GraphSeriesXY,
   LinkModel,
   Field,
 } from '@grafana/data';
-import { LegacyForms, LogLabels, ToggleButtonGroup, ToggleButton, LogRows, Button } from '@grafana/ui';
+import { LegacyForms, LogLabels, LogRows, Button } from '@grafana/ui';
 const { Switch } = LegacyForms;
 import store from 'app/core/store';
 
@@ -181,7 +180,7 @@ export class Logs extends PureComponent<Props, State> {
       });
     }
 
-    const scanText = scanRange ? `Scanning ${rangeUtil.describeTimeRange(scanRange)}` : 'Scanning...';
+    const scanText = scanRange ? `正在扫描 ${rangeUtil.describeTimeRange(scanRange)}` : '正在扫描...';
     const series = logsSeries ? logsSeries : [];
 
     return (

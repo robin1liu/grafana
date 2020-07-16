@@ -6,7 +6,7 @@ import { stylesFactory, useTheme, TextArea, Button, IconButton } from '@grafana/
 import { getDataSourceSrv } from '@grafana/runtime';
 import { GrafanaTheme, AppEvents, DataSourceApi } from '@grafana/data';
 import { RichHistoryQuery, ExploreId } from 'app/types/explore';
-import { copyStringToClipboard, createUrlFromRichHistory, createQueryText } from 'app/core/utils/richHistory';
+import { copyStringToClipboard, createQueryText } from 'app/core/utils/richHistory';
 import appEvents from 'app/core/app_events';
 import { StoreState } from 'app/types';
 
@@ -174,12 +174,6 @@ export function RichHistoryCard(props: Props) {
     const queriesToCopy = query.queries.map(q => createQueryText(q, queryDsInstance)).join('\n');
     copyStringToClipboard(queriesToCopy);
     appEvents.emit(AppEvents.alertSuccess, ['查询已复制']);
-  };
-
-  const onCreateLink = () => {
-    const url = createUrlFromRichHistory(query);
-    copyStringToClipboard(url);
-    appEvents.emit(AppEvents.alertSuccess, ['Link copied to clipboard']);
   };
 
   const onDeleteQuery = () => {

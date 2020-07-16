@@ -10,3 +10,4 @@ make run
 yarn watch
 
 修改前端文件，然后刷新
+<!-- search.kiosk = 'tv'; -->

@@ -6,9 +6,8 @@ import classNames from 'classnames';
 import { css } from 'emotion';
 
 import { ExploreId, ExploreItemState } from 'app/types/explore';
-import { Icon, IconButton, LegacyForms, SetInterval, ToggleButton, ToggleButtonGroup, Tooltip } from '@grafana/ui';
+import { Icon, IconButton, LegacyForms, SetInterval, Tooltip } from '@grafana/ui';
 import { DataQuery, ExploreMode, RawTimeRange, TimeRange, TimeZone } from '@grafana/data';
-import { DataSourcePicker } from 'app/core/components/Select/DataSourcePicker';
 import { StoreState } from 'app/types/store';
 import {
   cancelQueries,
@@ -161,7 +160,6 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
 
   render() {
     const {
-      datasourceMissing,
       closeSplit,
       exploreId,
       loading,
@@ -172,13 +170,10 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
       refreshInterval,
       onChangeTime,
       split,
-      supportedModes,
-      selectedMode,
       hasLiveOption,
       isLive,
       isPaused,
       originPanelId,
-      datasourceLoading,
       containerWidth,
     } = this.props;
 
@@ -189,10 +184,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
       'navbar-button navbar-button--border-right-0': originDashboardIsEditable,
     });
 
-    const showSmallDataSourcePicker = (splitted ? containerWidth < 700 : containerWidth < 800) || false;
     const showSmallTimePicker = splitted || containerWidth < 1210;
-
-    const showModeToggle = supportedModes.length > 1;
 
     return (
       <div className={splitted ? 'explore-toolbar splitted' : 'explore-toolbar'}>
