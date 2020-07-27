@@ -11,3 +11,5 @@ yarn watch
 
 修改前端文件，然后刷新
 <!-- search.kiosk = 'tv'; -->
+打包
+docker build -t 10.20.42.253/library/grafana:dev-0.1 .

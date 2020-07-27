@@ -131,6 +131,7 @@ export class QueryRow extends PureComponent<QueryRowProps, QueryRowState> {
     } = this.props;
 
     const queryErrors = queryResponse.error && queryResponse.error.refId === query.refId ? [queryResponse.error] : [];
+    queryResponse.request.range = range;
 
     const ReactQueryEditor = this.setReactQueryEditor();
 
